@@ -5,6 +5,7 @@
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
       ./starship.nix
+      ./greeter.nix
     ];
 
   # Bootloader.
@@ -69,6 +70,7 @@
     duf
     starship
     ghostty
+    fuzzel
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
