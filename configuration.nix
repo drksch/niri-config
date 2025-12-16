@@ -4,6 +4,7 @@
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
+      ./starship.nix
     ];
 
   # Bootloader.
@@ -56,15 +57,18 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  wget
-  helix
-  git
-  librewolf
-  htop
-  bat
-  duf
-  starship
-  ghostty
+    xwayland-satellite
+    lazygit
+    rofi
+    wget
+    helix
+    git
+    librewolf
+    htop
+    bat
+    duf
+    starship
+    ghostty
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
