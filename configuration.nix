@@ -57,6 +57,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     xwayland-satellite
+    tuigreet
     lazygit
     rofi
     wget

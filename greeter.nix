@@ -11,7 +11,7 @@
             --user-menu \
             --remember \
             --greeting WELCOME \
-            --theme text=red;prompt=green;time=red;input=red;border=white;title=red;action=white;greet=white \
+            --theme border=lightred;text=white;prompt=purple;time=orange;action=green;button=LightGray;container=black;input=white" \
             --cmd niri
         '';
         user = "greeter";
