@@ -1,18 +1,20 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs,  ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
+      ./hardware-configuration.nix
       ./starship.nix
       ./greeter.nix
+      ./host.nix
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "7357"; # Define your hostname.
+  networking.hostName = "rapture"; # Define your hostname.
+  nixpkgs.config.allowUnfree = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking
@@ -30,11 +32,13 @@
     variant = "";
   };
 
+  services.tlp.enable = true;
+  services.upower.enable = true;
+
   # Temp install niri
   programs.niri.enable = true;
-  programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
-  
+  programs.zsh.enable = true;  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.arshes = {
     isNormalUser = true;
@@ -55,22 +59,30 @@
     nerd-fonts.intone-mono
   ];
   # List packages installed in system profile. To search, run:
+  environment.variables.EDITOR = "hx";
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     xwayland-satellite
-    tuigreet
     lazygit
-    rofi
     wget
     helix
     git
-    librewolf
-    htop
+    nyxt
+    # librewolf
+    neofetch
+    gh
+    btop
     bat
     duf
+    wezterm
     starship
     ghostty
+    tuigreet
     fuzzel
+    tealdeer
+    fzf
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
