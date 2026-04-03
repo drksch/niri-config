@@ -8,9 +8,9 @@
   # Git configuration
   programs.git = {
     enable = true;
-    userName = "drksch";
-    userEmail = "sudodrksch9dr@proton.me"; # Update this with your email
-    extraConfig  = {
+    settings = {
+      user.name = "drksch";
+      user.email = "add me after@install";
       init.defaultBranch = "main";
       pull.rebase = false;
     };
